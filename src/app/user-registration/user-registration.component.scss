@@ -1,0 +1,102 @@
+* {box-sizing: border-box}
+
+.invalid-feedback{
+	display:block;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=number], textarea, select {
+  width: 100%;
+  padding: 15px 15px 15px 0px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  border-bottom: 2px solid #ccc;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #fff !important;
+  outline: none;
+}
+
+input:-internal-autofill-selected, .ng-dirty.ng-valid.ng-touched {
+  background-color: #fff !important;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.re_new_group {
+    width: 100%;
+}
+.re_new_group_ch {
+    width: 50%;
+    float: left;
+    padding: 0px 10px;
+}
+.re_new_group_one {
+    width: 100%;
+    padding: 0px 10px;
+}
+
+
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    box-shadow: 0 0 0 30px white inset !important;
+}
+
+
+input {
+  filter: none;
+}
+
+
+select {
+  background-color: #fff;
+  text-decoration: blink;
+
+  }
+
+  select, select.form-control {
+    -moz-appearance:initial;
+    -webkit-appearance: menulist;
+}
+

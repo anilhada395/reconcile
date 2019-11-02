@@ -1,0 +1,31 @@
+<div class="logo re_nav">
+        <a href="#" class="simple-text">
+            Reconcile
+        </a>
+</div>
+   <div class="sidebar-wrapper re_nav">
+      <div *ngIf="isMobileMenu()">
+      </div>
+        <ul class="nav">
+            <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+                <a *ngIf="menuItem.path != '#'" class="nav-link" [routerLink]="[menuItem.path]">
+                    <i class="material-icons">{{menuItem.icon}}</i>
+                    <p>{{menuItem.title}}</p>
+                </a>
+                <a *ngIf="menuItem.path == '#'" class="nav-link fbtn" style="cursor: pointer;" data-toggle="collapse" aria-expanded="true">
+                        <i class="material-icons">{{menuItem.icon}}</i>
+                        <p>{{menuItem.title}}<b class="caret"></b></p>
+                </a>
+                <div *ngFor="let childs of menuItem.child" class="tflag collapse " style="margin-left: 28px;">
+                    <ul class="nav">
+                        <li class="nav-item" routerlinkactive="active">
+                            <a  class="nav-link" [routerLink]="[childs.path]">
+                                <i class="material-icons">{{childs.icon}}</i>
+                                <p>{{childs.title}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div> 

@@ -1,0 +1,118 @@
+.row {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+/************************************************/
+.re_in_reconcile {
+    background-color: #fff;
+    border: 1px solid #d4d4d4;
+    border-radius: 6px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.col-lg-6.col-md-12.re_left.re_in_reconcile {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 30px;
+}
+.col-lg-6.col-md-12.re_right.re_in_reconcile {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 30px;
+}
+.re_left_table tr:nth-child(even) {background-color: #e2e2e2;}
+.re_right_table tr:nth-child(even) {background-color: #ddebf4;}
+
+.re_left_col table {
+    width: 100%;
+    border: 1px dotted #c1c1c1;
+}
+.re_left_col thead {
+    border-bottom: 2px solid #c1c1c1;
+}
+.re_left_col th {
+    border-left: 1px dotted #dcdcdc;
+    color: #505050;
+    font-size: 13px;
+    padding: 0px 3px;
+}
+table.dataTable thead th, table.dataTable thead td {
+    border-bottom: 1px dotted #dcdcdc;
+}
+.re_left_title h4 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 3px;
+}
+.re_left_col tbody {
+    background-color: #fff;
+}
+.re_left_col td {
+    border-right: 1px inset #d2d2d2;
+    color: #333;
+    font-size: 13px;
+    padding: 0px 3px;
+    font-weight: normal;
+}
+
+/*===== Right column=====*/
+.re_right_col {
+    border: 1px dotted #c1c1c1;
+}
+.re_right_col table {
+    width: 100%;
+}
+.re_right_col thead {
+    border-bottom: 2px solid #c1c1c1;
+}
+.re_right_col th {
+    border-left: 1px dotted #dcdcdc;
+    color: #868686;
+    font-size: 13px;
+    padding: 0px 3px;
+}
+.re_right_title h4 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 3px;
+}
+.re_right_col tbody {
+    background-color: #fff;
+}
+.re_right_col td {
+    border-right: 1px inset #d2d2d2;
+    color: #333;
+    font-size: 13px;
+    padding: 0px 3px;
+    font-weight: normal;
+}
+.re_bottom_note {
+    padding: 0px 2px;
+}
+
+.ref_loding.loading {
+    animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+            transform: rotate(0deg);
+    }
+    to {
+            transform: rotate(-359deg);
+    }
+}
+
+.ref_load_div{
+    width: 100%;
+    text-align: center;
+    padding: 15% 0px;
+}
+
+.pointer{ 
+    cursor: pointer; 
+}
+
+.amount_right{
+    text-align: right;
+}

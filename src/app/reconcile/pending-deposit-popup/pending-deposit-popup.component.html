@@ -1,0 +1,31 @@
+<div class="modal-header">
+	<h4 class="modal-title">Pending Deposit Details</h4>
+	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+  <div class="re_tbl_col "style="text-align: center;">
+    <table class="re_left_table">
+      <thead >
+        <th>Source</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Date</th>
+    </thead>
+      <tbody>
+          <tr *ngFor="let data of trans_id; index as i;">
+              <td>{{data['source']}}</td>
+              <td>{{data['description']}}</td>
+              <td>{{data['amount'] }}</td>
+              <td>{{data['date']}}</td>
+          </tr>
+      </tbody>
+  </table>
+  <div *ngIf="note" class="re_note_msg">Note:- {{note}}</div>
+  <div class="recon_total_amount">Total:&nbsp; {{deposit_rco_totle}}</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" id="re_close" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

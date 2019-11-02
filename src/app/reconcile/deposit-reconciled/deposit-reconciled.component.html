@@ -1,0 +1,36 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 re_left re_in_reconcile">
+                <div class="">
+                    <div class="re_left_title">
+                        <h4></h4>
+                    </div>
+                    <div class="re_left_col">
+                        <div *ngIf="deposit_reconciled; else deposit_reconciledelseBlock"></div>
+                        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover re_left_table">
+                            <thead class="">
+                                <tr *ngIf='length >= 0'>
+                                <th>Recociled By</th>
+                                <th>Bank</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of deposit_reconciled; index as i;">
+                                    <td class="pointer" (click)="show_more_details(data['pending_deposit_id'], data['note'])">{{data['reconciled_by']}}</td>
+                                    <td class="pointer" (click)="show_more_details(data['pending_deposit_id'], data['note'])">{{data['bank']}}</td>
+                                    <td class="pointer" (click)="show_more_details(data['pending_deposit_id'], data['note'])">{{data['created_date'] }}</td>
+                                    <td class="pointer amount_right" (click)="show_more_details(data['pending_deposit_id'], data['note'])">{{data['amount']}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ng-template #deposit_reconciledelseBlock><div class="ref_load_div"><img class="ref_loding loading" style="width:50px;" src="assets/img/ref.png"></div></ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      

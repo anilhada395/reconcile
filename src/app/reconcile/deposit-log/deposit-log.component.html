@@ -1,0 +1,92 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title ">Add Deposit Log</h4>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="depositlog_form" (ngSubmit)="onSubmit()"> 
+                    <div class="container">
+                        <div class="re_new_group">   
+                          <div class="re_new_group_ch">
+                          <mat-form-field>
+                            <input matInput [matDatepicker]="dp" formControlName="deposit_date">
+                            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                            <mat-datepicker #dp></mat-datepicker>
+                          </mat-form-field>
+                          <div *ngIf="submitted && f.deposit_date.errors" class="invalid-feedback">
+
+                            <div *ngIf="f.deposit_date.errors.matDatepickerParse && f.deposit_date.errors.required; else newelseBlock" style="color:red;"> 
+                            
+                            <div *ngIf="f.deposit_date.errors.matDatepickerParse" style="color:red;"> Date is Invalid</div>
+                            </div>
+                            <ng-template #newelseBlock><div *ngIf="f.deposit_date.errors.required" style="color:red;">Date is required</div></ng-template>
+                          </div>
+                          </div>
+
+                          <div class="re_new_group_ch">
+                          <select class="de_select" name="deposit_type" formControlName="deposit_type" >
+                              <option value="" selected="selected" disabled="disabled">Select Deposit Type</option>
+                              <option value="cash">Cash</option>
+                              <option value="checks">Checks</option>
+                            </select><br>
+                            <div *ngIf="submitted && f.deposit_type.errors" class="invalid-feedback">
+                              <div *ngIf="f.deposit_type.errors.required" style="color:red;">Deposit type is required</div><br>
+                            </div>
+                            </div>
+                          </div>
+
+                          <div class="re_new_group">   
+                          <div class="re_new_group_ch">
+                          <input type="text" placeholder="Enter Customer Name" name="description" formControlName="description" />
+                          </div>
+                          <div class="re_new_group_ch">
+                          <input type="number" placeholder="Enter Amount" name="amount" formControlName="amount" [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
+                          <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+                            <div *ngIf="f.amount.errors.required" style="color:red;">Amount is required</div><br>
+                          </div>
+                        </div>
+                      </div>
+                        
+                        <input type="hidden"  name="id" formControlName="id"/>
+                        <button  class="registerbtn">{{button_val}}</button>
+                      
+                    </div>
+                  </form>
+                  <div class="deposit_log_hr"><hr></div>
+
+              <div>
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover re_right_table deposit_tbl">
+                        <thead >
+                            <tr *ngIf='length >=  0'>
+                            <th>Date</th>
+                            <th>Deposit Type</th>
+                            <th>Customer Name</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of deposit_log_data; index as i">
+                                <td>{{item.date}}</td>
+                                <td>{{item.payment_type}}</td>
+                                <td>{{item.description}}</td>
+                                <td>{{item.amount}}</td>
+                                <td><a (click)="edit(item._id)"><img class="pointer" style="width:20px;" src="assets/img/edit.png"></a>&nbsp;&nbsp; <a class="userdelete" (click)="delete( item._id)" ><img class="pointer" style="width:20px;" src="assets/img/delete.png"></a></td>
+                            </tr>
+                    </tbody>
+                </table>
+
+                <div class="re_reconcile_div">
+                    <button class="reconcile_button" (click)="chk_deposit_log_click()" >Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

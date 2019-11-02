@@ -1,0 +1,49 @@
+.re_tbl_col table {
+    width: 100%;
+    border: 1px solid #cecece;
+    margin: 25px 0px;
+}
+
+.re_left_table tr:nth-child(even) {background-color: #e2e2e2;}
+.re_right_table tr:nth-child(even) {background-color: #ddebf4;}
+.re_left_col {
+    border: 1px dotted #c1c1c1;
+}
+
+.re_tbl_col thead {
+    border-bottom: 2px solid #c3c3c3;
+}
+.re_tbl_col th {
+    border-left: 1px dotted #dcdcdc;
+    color: #3c3c3c;
+    font-size: 13px;
+    padding: 0px 3px;
+}
+.re_left_title h4 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 3px;
+}
+.re_tbl_col tbody {
+    background-color: #fff;
+}
+.re_tbl_col td {
+    border-right: 1px inset #d2d2d2;
+    color: #333;
+    font-size: 13px;
+    padding: 0px 3px;
+    font-weight: normal;
+}
+.recon_total_amount {
+    text-align: right;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.modal-backdrop {
+    background-color: transparent !important;
+}
+.re_note_msg {
+    text-align: center;
+}

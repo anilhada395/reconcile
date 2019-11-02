@@ -1,0 +1,21 @@
+.re_header_title {
+    border-radius: 3px;
+    margin-top: -20px;
+    padding: 10px;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(197, 197, 197, 0.4);
+    background: linear-gradient(60deg, #275d7d, #275d7d);
+}
+.re_header_title h4 {
+    color: #fff;
+    text-align: center;
+}
+
+.re_nav_title {
+    width: 100%;
+    margin: 0px 8px;
+}
+
+.card {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}

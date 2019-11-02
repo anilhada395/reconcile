@@ -1,0 +1,105 @@
+<div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                      <div class="col-lg-6 col-md-12 re_left re_in_reconcile">
+                          <div class="">
+                              <div class="re_left_title">
+                                  <h4>Pending Deposit</h4>
+                              </div>
+                              
+                              <div class="re_left_col">
+                                    <div *ngIf="pending_deposit; else pending_depositelseBlock"></div>
+                                  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover re_left_table pending_deposit_tbl">
+                                      <thead class="">
+                                         <tr *ngIf='length >= 0'>
+                                          <th><input type="checkbox"></th>
+                                          <th>Date</th>
+                                          <th>Trans ID</th>
+                                          <th>User ID</th>
+                                          <th>Amount</th>
+                                          <th class="re_chk_hide">id</th>
+                                         </tr>
+                                      </thead>
+                                      <tbody>
+                                            <tr *ngFor="let data of pending_deposit; index as i;">
+                                                <td><input class="panding_deposit_tbl_chk" name="panding_deposit_chk" type="checkbox" value="checkbox{{i}}" (click)="chk_click_check()"></td>
+                                                <td class="pointer" (click)="open(data['reconcile_data'],data['note'])">{{data['date']}}</td>
+                                                <td class="pointer" (click)="open(data['reconcile_data'],data['note'])">{{data['transaction_id']}}</td>
+                                                <td class="pointer" (click)="open(data['reconcile_data'],data['note'])">{{data['user_id'] }}</td>
+                                                <td class="pointer amount_right" (click)="open(data['reconcile_data'],data['note'])">{{data['amount']}}</td>
+                                                <td class="re_chk_hide">{{data['_id']}}</td>
+                                            </tr>
+                                      </tbody>
+                                  </table>
+                                  <ng-template #pending_depositelseBlock><div class="ref_load_div"><img class="ref_loding loading" style="width:50px;" src="assets/img/ref.png"></div></ng-template>
+                              </div>
+                              <div class="re_reconcile_div">
+                                    <div class="re_deposit_totle"  *ngIf="pe_deposit_totle">Total:&nbsp; {{pe_deposit_totle}}</div>
+                                </div>
+                          </div>
+                      </div>
+                  <div class="col-lg-6 col-md-12 re_right re_in_reconcile">
+                          <div class="">
+                              <div class="re_right_title">
+                                  <h4 >Capital One and PSB Bank Deposits</h4>
+                                  <!-- <p class="card-category">Wire In PSB & 6128 ACH info/Iaccess</p> -->
+                              </div>
+                              <div *ngIf="new_bank_data; else new_bank_dataelseBlock"></div>
+                              <div class="re_right_col">
+                                  <table datatable [dtOptions]="dtOptions1" [dtTrigger]="dtTrigger1" class="row-border hover re_right_table bank_deposit">
+                                      <thead >
+                                        <tr  *ngIf='length1 >=  0'>
+                                          <th><input type="checkbox"></th>
+                                          <th>Bank</th>
+                                          <th>Description</th>
+                                          <th>Date</th>
+                                          <th>Amount</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr *ngFor="let data of new_bank_data; index as i;">
+                                              <td><input class="bank_deposit_tbl_chk" name="bank_deposit_chk" type="checkbox" value="checkbox0" (click)="chk_click_check()"></td>
+                                              <td>{{data['bank_name']}}</td>
+                                              <td>{{data['description']}}</td>
+                                              <td>{{data['date']}}</td>
+                                              <td class="amount_right">{{data['amount']}}</td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                                  <ng-template #new_bank_dataelseBlock><div class="ref_load_div"><img class="ref_loding loading" style="width:50px;" src="assets/img/ref.png"></div></ng-template>
+                              </div>
+                              <div class="re_reconcile_div">
+                                    <div class="re_deposit_totle"  *ngIf="bank_deposit_log_totle">Total:&nbsp; {{bank_deposit_log_totle}}</div>
+                                    <button class="reconcile_button disabled" (click)="onSubmit()" disabled>Reconcile & Varified</button>
+                                </div>
+                          </div>
+                  </div>
+          </div>
+              <div class="row re_bottom_note">
+                  <div class="card card-plain">
+                      <div class="card-header card-header-danger">
+                        <h4 class="card-title mt-0"> Notes</h4>
+                        <p class="card-category"> 
+                            <mwl-text-input-autocomplete-container>
+                                <textarea
+                                    placeholder="Type @ to search..."
+                                    class="form-control re_note_textarea re_note"
+                                    rows="5"
+                                    [(ngModel)]="formControlValue"
+                                    mwlTextInputAutocomplete
+                                    [findChoices]="findChoices"
+                                    [getChoiceLabel]="getChoiceLabel">
+                                </textarea>
+                                </mwl-text-input-autocomplete-container>
+                            </p>
+                        <div class="note_button_div">
+                            <span class="note_loading_img"><img class="ref_loding loading" style="width:30px;" src="assets/img/ref.png">&nbsp;
+                            </span>
+                            <button class="note_button reconcile_button" (click)="send_note()">Send</button>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+        </div>
+      </div>
+      

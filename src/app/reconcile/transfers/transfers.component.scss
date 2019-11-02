@@ -1,0 +1,202 @@
+.row {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+/************************************************/
+.re_left_col td input {
+    width: 100%;
+}
+
+.idms_amt_val.disabled {
+    border: 0px;
+    background-color: transparent;
+}
+
+.re_left_col {
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.re_right_col {
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+button.reconcile_button.disabled {
+    color: #5d5d5d;
+    background-color: #c3c3c3;
+}
+
+textarea.re_note {
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 3px;
+}
+
+.re_chk_hide{
+    display: none;
+}
+.re_reconcile_div {
+    margin: 30px 0px;
+    text-align: right;
+    padding-right: 80px;
+}
+button.reconcile_button {
+    margin: 30px 0px;
+    background-color: #235979;
+    color: #fff;
+    border-radius: 7px;
+    padding: 10px;
+    border: 1px solid #fff;
+}
+.re_in_reconcile {
+    background-color: #fff;
+    border: 1px solid #d4d4d4;
+    border-radius: 6px;
+}
+.col-lg-6.col-md-12.re_left.re_in_reconcile {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 30px;
+}
+.col-lg-6.col-md-12.re_right.re_in_reconcile {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 30px;
+}
+.re_left_table tr:nth-child(even) {background-color: #e2e2e2;}
+.re_right_table tr:nth-child(even) {background-color: #ddebf4;}
+
+.re_left_col table {
+    width: 100%;
+    border: 1px dotted #c1c1c1;
+}
+.re_left_col thead {
+    border-bottom: 2px solid #c1c1c1;
+}
+table.dataTable thead th, table.dataTable thead td {
+    border-bottom: 2px solid #dcdcdc !important;
+    // height: 55px;
+}
+.re_left_col th {
+    border-right: 1px dotted #dcdcdc;
+    color: #505050;
+    font-size: 13px;
+    padding: 0px 3px;
+}
+.re_left_title h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 3px;
+}
+.re_left_col tbody {
+    background-color: #fff;
+}
+.re_left_col td {
+    border-right: 1px inset #d2d2d2;
+    color: #333;
+    font-size: 12px;
+    padding: 0px 3px;
+    font-weight: normal;
+}
+
+/*===== Right column=====*/
+.re_right_col table {
+    width: 100%;
+    border: 1px dotted #c1c1c1;
+}
+.re_right_col thead {
+    border-bottom: 2px solid #c1c1c1;
+}
+.re_right_col th {
+    border-right: 1px dotted #dcdcdc;
+    color: #505050;
+    font-size: 13px;
+    padding: 5px 3px;
+}
+
+.re_left_col tr {
+    line-height: 12px;
+    height: 59px;
+}
+
+
+.re_right_title h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 3px;
+}
+.re_right_col tbody {
+    background-color: #fff;
+}
+.re_right_col td {
+    border-right: 1px inset #d2d2d2;
+    color: #333;
+    font-size: 13px;
+    padding: 5px 3px;
+    font-weight: normal;
+}
+.re_bottom_note {
+    padding: 0px 2px;
+}
+
+.ref_loding.loading {
+    animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+            transform: rotate(0deg);
+    }
+    to {
+            transform: rotate(-359deg);
+    }
+}
+
+.ref_load_div{
+    width: 100%;
+    text-align: center;
+    padding: 42% 0px;
+}
+
+.re_deposit_totle {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.modal-backdrop {
+    background-color: transparent !important;
+}
+
+.modal-backdrop.show {
+    opacity: 0 !important;
+}
+
+button.transfer_button {
+    background-color: #235979;
+    color: #fff;
+    border-radius: 7px;
+    padding: 10px;
+    border: 1px solid #fff;
+    padding: 11px 15px;
+}
+
+button.transfer_button.disabled {
+    color: #5d5d5d;
+    background-color: #c3c3c3;
+}
+.re_left_title {
+    margin-top: 10px;
+}
+.re_right_title {
+    margin-top: 10px;
+}
+
+.pointer{ 
+    cursor: pointer; 
+}
+.amount_right{
+    text-align: right;
+}

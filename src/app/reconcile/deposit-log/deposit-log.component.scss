@@ -1,0 +1,132 @@
+* {box-sizing: border-box}
+
+.invalid-feedback{
+	display:block;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=number], textarea, select {
+  width: 100%;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  border-bottom: 2px solid #ccc;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #fff;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.re_new_group {
+    width: 100%;
+    float: left;
+}
+.re_new_group_ch {
+    width: 50%;
+    float: left;
+    padding: 0px 10px;
+}
+.re_new_group_one {
+    width: 100%;
+    padding: 0px 10px;
+}
+
+.re_reconcile_div{
+  text-align: right;
+  padding-right: 80px;
+}
+
+button.reconcile_button {
+  margin: 30px 0px;
+  background-color: #235979;
+  color: #fff;
+  border-radius: 7px;
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+button.reconcile_button.disabled {
+  color: #5d5d5d;
+  background-color: #c3c3c3;
+}
+
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    box-shadow: 0 0 0 30px white inset !important;
+}
+
+
+input {
+  filter: none;
+}
+
+
+select {
+  background-color: #fff;
+  text-decoration: blink;
+
+  }
+
+  select, select.form-control {
+    -moz-appearance:initial;
+    -webkit-appearance: menulist;
+}
+
+.de_select {
+  margin-bottom: 0px !important;
+  margin-top: 19px;
+}
+
+tbody tr td {
+  font-weight: normal;
+  padding: 6px 10px !important;
+}
+
+.email_padding {
+  width: 90px !important;
+}
+.table thead tr th {
+  font-size: 15px !important;
+}

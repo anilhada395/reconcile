@@ -1,0 +1,51 @@
+import { Routes } from '@angular/router';
+
+import { DashboardComponent } from '../../dashboard/dashboard.component';
+import { UserProfileComponent } from '../../user-profile/user-profile.component';
+import { TableListComponent } from '../../table-list/table-list.component';
+import { TypographyComponent } from '../../typography/typography.component';
+import { IconsComponent } from '../../icons/icons.component';
+import { MapsComponent } from '../../maps/maps.component';
+import { NotificationsComponent } from '../../notifications/notifications.component';
+import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { UsersComponent } from '../../users/users.component';
+import { LogoutComponent } from '../../logout/logout.component';
+import { IncomingComponent } from '../../reconcile/incoming/incoming.component';
+import { OutgoingComponent } from '../../reconcile/outgoing/outgoing.component';
+import { DepositsComponent } from '../../reconcile/deposits/deposits.component';
+import { DepositReconciledComponent } from '../../reconcile/deposit-reconciled/deposit-reconciled.component';
+import { ReconciledComponent } from '../../reconcile/reconciled/reconciled.component';
+import { TransfersComponent } from '../../reconcile/transfers/transfers.component';
+import { SettingComponent } from '../../reconcile/setting/setting.component';
+import { VendorComponent } from '../../reconcile/vendor/vendor.component';
+import { BankComponent } from '../../reconcile/bank/bank.component';
+import { FlaggedComponent } from '../../reconcile/flagged/flagged.component';
+import { DepositLogComponent } from '../../reconcile/deposit-log/deposit-log.component';
+import { FlagCloseComponent } from '../../reconcile/flag-close/flag-close.component'
+import { FlagOpenComponent } from '../../reconcile/flag-open/flag-open.component'
+
+export const AdminLayoutRoutes: Routes = [
+    { path: 'dashboard',           component: DashboardComponent },
+    { path: 'users',               component: UsersComponent },
+    { path: 'user-profile',        component: UserProfileComponent },
+    { path: 'table-list',          component: TableListComponent },
+    { path: 'typography',          component: TypographyComponent },
+    { path: 'icons',               component: IconsComponent },
+    { path: 'maps',                component: MapsComponent },
+    { path: 'notifications',       component: NotificationsComponent },
+    { path: 'upgrade',             component: UpgradeComponent },
+    { path: 'logout',              component: LogoutComponent },
+    { path: 'incoming',            component: IncomingComponent },
+    { path: 'outgoing',            component: OutgoingComponent },
+    { path: 'deposits',            component: DepositsComponent },
+    { path: 'deposits-reconciled', component: DepositReconciledComponent },
+    { path: 'reconciled',          component: ReconciledComponent },
+    { path: 'transfers',           component: TransfersComponent },
+    { path: 'setting',             component: SettingComponent },
+    { path: 'vendor',              component: VendorComponent },
+    { path: 'bank',                component: BankComponent },
+    { path: 'flagged',             component: FlaggedComponent },
+    { path: 'deposit-log',         component: DepositLogComponent },
+    { path: 'flag_open',           component: FlagOpenComponent },
+    { path: 'flag_close',          component: FlagCloseComponent },
+];

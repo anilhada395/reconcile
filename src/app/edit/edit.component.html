@@ -1,0 +1,81 @@
+<div class="modal-header">
+	<h4 class="modal-title">Edit User</h4>
+	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<div style="text-align: center;">
+		<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+			<div class="container">
+				<div class="re_new_group_one">
+							<input type="hidden" name="id" formControlName="id"  [(ngModel)]="userId"/>
+						<input type="text" placeholder="Enter Name" name="name" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"  [(ngModel)]="userName"/>
+						<div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+							<div *ngIf="f.name.errors.required" style="color:red;">Name is required</div><br>
+						</div>
+				</div>
+
+				<div class="re_new_group">
+					<div class="re_new_group_ch">
+						<input type="text" placeholder="Enter Email" name="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" [(ngModel)]="userEmail"/>
+						<div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+							<div *ngIf="f.email.errors.required" style="color:red;">Email is required</div>
+							<div *ngIf="f.email.errors.email" style="color:red;">Email must be a valid email address</div><br>
+						</div>
+					</div>
+					
+					<div class="re_new_group_ch">
+						<input type="text" placeholder="Enter Phone" name="phone" formControlName="phone" [ngClass]="{'is-invalid': submitted && f.phone.errors}" [(ngModel)]="userPhone"/>
+						<div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+							<div *ngIf="f.phone.errors.required" style="color:red;">Phone is required</div>
+							<div *ngIf="f.phone.errors.maxlength" style="color:red;">Phone number must be 10 digit long</div>
+							<div *ngIf="f.phone.errors.pattern" style="color:red;">Please enter valid phone number</div><br>
+						</div>
+					</div>
+				</div>
+
+				<div class="re_new_group_one">
+					<textarea formControlName="address" rows="2" cols="20" placeholder="Enter Address" [(ngModel)]="userAddress"></textarea>
+				</div>
+				
+				<div class="re_new_group">
+					<div class="re_new_group_ch">
+						<select name="country" formControlName="country" [(ngModel)]="userCountry">
+							<option value="" selected="selected" disabled="disabled">Select country</option>
+							<option *ngFor="let Country of country" [value]="Country.value">{{Country.viewValue}}</option>
+						</select><br>
+						<div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+							<div *ngIf="f.country.errors.required" style="color:red;">Country is required</div><br>
+						</div>
+					</div>
+					
+					<div class="re_new_group_ch">
+						<select name="gender" formControlName="gender" [(ngModel)]="userGender">
+							<option value="" selected="selected" disabled="disabled">Select Gender</option>
+							<option *ngFor="let Gender of gender" [value]="Gender.value">{{Gender.viewValue}}</option>
+						</select><br>
+						<div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+							<div *ngIf="f.gender.errors.required" style="color:red;">Gender is required</div><br>
+						</div>
+					</div>
+				</div>
+				
+				<div class="re_new_group_one">
+					<select name="role" formControlName="role" [(ngModel)]="userRole_id">
+						<option value="" selected="selected" disabled="disabled">Select Role</option>
+						<option *ngFor="let usersRole of usersRole" value="{{usersRole._id}}">{{usersRole.user_role}}</option>
+					</select><br>
+					<div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+						<div *ngIf="f.role.errors.required" style="color:red;">Role is required</div><br>
+					</div>
+				</div><br>
+				
+				<button  class="registerbtn">Edit</button>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" id="re_close" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

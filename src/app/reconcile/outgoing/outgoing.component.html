@@ -1,0 +1,121 @@
+<div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                      <div class="col-lg-6 col-md-12 re_left re_in_reconcile">
+                          <div class="">
+                              <div class="re_left_title">
+                                  <h4>Intacct Data</h4>
+                                  <span class="ref_img"><img class="ref_loding" style="width:25px;" src="assets/img/ref.png" (click)="refIntacct()"></span>
+                              </div>
+                              <div class="re_left_col">
+                                  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover re_left_table intcct_tbl">
+                                      <thead class="">
+                                        <tr *ngIf='length >= 0'>
+                                          <th><input type="checkbox"></th>
+                                          <th>Date</th>
+                                          <th>Vendor</th>
+                                          <th>Amount</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                            <tr *ngFor="let intcct of intcctData; index as i;">
+                                                <td ><input class="" type="checkbox" value="checkbox{{i}}" name="intcct_tbl_chk" (click)="chk_both_tbl_click()"></td>
+                                                <td >{{intcct.date}}</td>
+                                                <td>{{intcct.vendor}}</td>
+                                                <td class="amount_right">{{intcct.amount}}</td>
+                                            </tr>
+                                      </tbody>
+                                  </table>
+                              </div>
+                              <div class="re_reconcile_div">
+                                    <div class="re_intcct_totle"  *ngIf="intact_total_amount">Total:&nbsp; {{intact_total_amount}}</div>
+                                </div>
+                          </div>
+                      </div>
+                  <div class="col-lg-6 col-md-12 re_right re_in_reconcile">
+                          <div class="">
+                              <div class="re_right_title">
+                                  <h4 >PSB and CC Data (C1,Amazon CC)</h4>
+                                  <!-- <p class="card-category">Wire In PSB & 6128 ACH info/Iaccess</p> -->
+                              </div>
+                              <div *ngIf="outgoing_data_val; else outgoing_data_valelseBlock"></div>
+                              <div class="re_right_col">
+                                    
+                                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover re_right_table psb_cc_tbl">
+                                            <thead >
+                                              <tr *ngIf='length1 >= 0'> 
+                                                <th><input type="checkbox"></th>
+                                                <th>Date</th>
+                                                <th>Bank</th>
+                                                <th>Description</th>
+                                                <th>Amount</th>
+                                                <th>Flag</th>
+                                                <th> <img style="width:20px;" src="assets/img/triangle.png"></th>
+                                                <th class="re_chk_hide">id</th>
+                                                <th class="re_chk_hide">Flagged</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                  <tr *ngFor="let item of outgoing_data_val; index as i;">
+                                                      <td ><input class="" type="checkbox" value="checkbox{{i}}" name="psb_cc_tbl_chk" (click)="chk_both_tbl_click()"></td>
+                                                      <td >{{item.date}}</td>
+                                                      <td>{{item.bank_name}}</td>
+                                                      <td>{{item.description}}</td>
+                                                      <td class="amount_right">{{item.amount}}</td>
+                                                      <td>
+                                                          <label class="switch" *ngIf="item['flag'] == 'open'">
+                                                          <input type="checkbox" class="decheckbox{{i}} " name="deposit_tbl_chk_flag" (click)="show_flag(i,item._id)" checked ><span class="slider round"></span>
+                                                      </label>
+                                                      <label class="switch" *ngIf="item['flag'] != 'open'">
+                                                              <input type="checkbox" class="decheckbox{{i}}" name="deposit_tbl_chk_flag" (click)="show_flag(i,item._id)"><span class="slider round"></span>
+                                                          </label>
+                                                      </td>
+                                                      <td>
+                                                          <a (click)="outgoing_flag(item._id)"><img style="width:20px;" src="assets/img/bill3.jpg"></a>
+                                                      </td>
+                                                      <td class="re_chk_hide">{{item._id}}</td>
+      
+                                                      <td class="re_chk_hide"><input type="text" class="deposit_tbl_new_flag{{i}} flag_value flag_status_decheckbox{{i}}" [ngModel]="item['flag_data']" name="deposit_tbl_new_flag{{i}}"></td>
+                                                  </tr>
+                                            </tbody>
+                                        </table>
+                                  <ng-template #outgoing_data_valelseBlock><div class="ref_load_div"><img class="ref_loding loading" style="width:50px;" src="assets/img/ref.png"></div></ng-template>
+                              </div>
+                              <div class="re_reconcile_div">
+                                <div class="re_deposit_totle" *ngIf="outgoing_totle">Total:&nbsp; {{outgoing_totle}}</div>
+                                
+                                <div>
+                                <button class="reconcile_button disabled" (click)="onSubmit()" disabled>Reconcile & Varified</button>
+                                <button class="transfer_button disabled" (click)="onTransfer()"  disabled>Transfer</button>
+                                </div>
+                                
+                            </div>
+                          </div>
+                  </div>
+          </div>
+              <div class="row re_bottom_note">
+                  <div class="card card-plain">
+                      <div class="card-header card-header-danger">
+                        <h4 class="card-title mt-0"> Notes</h4>
+                        <p class="card-category"> <mwl-text-input-autocomplete-container>
+                                <textarea
+                                    placeholder="Type @ to search..."
+                                    class="form-control re_note_textarea re_note"
+                                    rows="5"
+                                    [(ngModel)]="formControlValue"
+                                    mwlTextInputAutocomplete
+                                    [findChoices]="findChoices"
+                                    [getChoiceLabel]="getChoiceLabel">
+                                </textarea>
+                                </mwl-text-input-autocomplete-container></p>
+                        <div class="note_button_div">
+                            <span class="note_loading_img"><img class="ref_loding_note loading" style="width:30px;" src="assets/img/ref.png">&nbsp;
+                            </span>
+                            <button class="note_button reconcile_button" (click)="send_note()">Send</button>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+        </div>
+      </div>
+      

@@ -1,0 +1,70 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 re_left re_in_reconcile">
+                <div class="">
+                    <div class="re_left_title">
+                        <h4>Incoming Transfered</h4>
+                    </div>
+                    <div class="re_left_col">
+                        <div *ngIf="transfer_deposit_log; else transfer_deposit_logelseBlock"></div>
+                        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover re_left_table">
+                            <thead class="">
+                                <tr *ngIf='length >= 0' >
+                                <th>Transfered By</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="pointer" *ngFor="let data of transfer_deposit_log; index as i;">
+                                    <td (click)="transfer_popup(data['note'])">{{data['transfered_by']}}</td>
+                                    <td (click)="transfer_popup(data['note'])">{{data['description']}}</td>
+                                    <td (click)="transfer_popup(data['note'])">{{data['date'] }}</td>
+                                    <td class="amount_right" (click)="transfer_popup(data['note'])">{{data['amount']}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ng-template #transfer_deposit_logelseBlock><div class="ref_load_div"><img class="ref_loding loading" style="width:50px;" src="assets/img/ref.png"></div></ng-template>
+                    </div>
+                    <div class="re_reconcile_div">
+                        <div class="re_deposit_totle"  *ngIf="in_trans_totle">Total:&nbsp; {{in_trans_totle}}</div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 re_right re_in_reconcile">
+                <div class="">
+                    <div class="re_right_title">
+                        <h4>Outgoing Transfered</h4>
+                    </div>
+                    <div *ngIf="transfer_psb_cc; else transfer_psb_ccelseBlock"></div>
+                    <div class="re_right_col">
+                            <table  datatable [dtOptions]="dtOptions1" [dtTrigger]="dtTrigger1" class="row-border hover re_left_table idms_tbl">
+                                <thead >
+                                    <tr *ngIf='length >= 0' >
+                                    <th>Transfered By</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="pointer" *ngFor="let data of transfer_psb_cc; index as i;">
+                                        <td (click)="transfer_popup(data['note'])">{{data['transfered_by']}}</td>
+                                        <td (click)="transfer_popup(data['note'])">{{data['description']}}</td>
+                                        <td (click)="transfer_popup(data['note'])">{{data['date'] }}</td>
+                                        <td class="amount_right" (click)="transfer_popup(data['note'])">{{data['amount']}}</td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                        <ng-template #transfer_psb_ccelseBlock><div class="ref_load_div"><img class="ref_loding loading" style="width:50px;" src="assets/img/ref.png"></div></ng-template>
+                    </div> 
+                    <div class="re_reconcile_div">
+                        <div class="re_deposit_totle"  *ngIf="out_trans_totle">Total:&nbsp; {{out_trans_totle}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <h4 class="modal-title">Flag Note</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div style="text-align: center;">
+    <div class="flag_main">
+      <div class="flag_child">
+          <textarea placeholder="Enter Note" class="note_class re_note" name="name"></textarea>
+          <div (click)="note_click()" class="note_submit">Submit</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" id="re_close" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

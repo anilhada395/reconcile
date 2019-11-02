@@ -1,0 +1,63 @@
+<div class="modal-header">
+  <h4 class="modal-title">Create Bill</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div style="text-align: center;">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <div class="container">
+        <div class="re_new_group_one">
+              <input type="hidden" formControlName="id" [(ngModel)]="bankId"/>
+            <input type="hidden" formControlName="bank_name" [(ngModel)]="bankName"/><br>
+        </div>
+
+        <div class="re_new_group">
+          <div class="re_new_group_ch">
+            <input type="hidden" formControlName="bank_description" [(ngModel)]="bankDescription"/>
+          </div>
+          
+          <div class="re_new_group_ch">
+            <input type="hidden" formControlName="bank_date" [(ngModel)]="bankDate"/>
+          </div>
+
+          <div class="re_new_group_ch">
+            <input type="hidden" formControlName="bank_amount" [(ngModel)]="bankAmount"/>
+          </div>
+        </div>
+
+        <div class="re_new_group_ch">
+            <label id="disable_value" for="acc_no" >Account Number</label>
+          <input type="text" formControlName="bank_accno" placeholder="Account Number" [(ngModel)]="bankAccountNo" disabled/>
+        </div>
+
+        <div class="re_new_group_ch">
+          <label id="disable_value" for="loction_id" >Location ID</label>
+            <input type="text" formControlName="bank_locationid" placeholder="Location ID" [(ngModel)]="bankLocationID" disabled/>
+          </div>
+
+          <div class="re_new_group_one">
+  
+            <input type="text" formControlName="bank_stockno" placeholder="Stock Number"/>
+            <div *ngIf="submitted && f.bank_stockno.errors" class="invalid-feedback">
+                <div *ngIf="f.bank_stockno.errors.required" style="color:red;">Stock Number is required</div><br>
+              </div>
+
+            <select formControlName="vendor_id">
+              <option value="" selected="selected" disabled="disabled">Select Vendor</option>
+              <option *ngFor="let Vendor of vendor" [value]="Vendor.vendor_id">{{Vendor.vendor_name}}</option>
+            </select><br>
+            <div *ngIf="submitted && f.vendor_id.errors" class="invalid-feedback">
+              <div *ngIf="f.vendor_id.errors.required" style="color:red;">Vendor is required</div><br>
+            </div>
+          </div>
+          
+        <button  class="registerbtn">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" id="re_close" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

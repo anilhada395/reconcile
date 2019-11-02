@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h4 class="modal-title">Edit Vendor</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div style="text-align: center;">
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div class="container">
+          <div class="re_new_group_one">
+                <input type="hidden" name="id" formControlName="id"  [(ngModel)]="id"/>
+              <input type="text" placeholder="Enter Vendor ID" name="vendor_id" formControlName="vendor_id" [ngClass]="{ 'is-invalid': submitted && f.vendor_id.errors }"  [(ngModel)]="vendor_id"/>
+              <div *ngIf="submitted && f.vendor_id.errors" class="invalid-feedback">
+                <div *ngIf="f.vendor_id.errors.required" style="color:red;">Vendor ID is required</div><br>
+              </div>
+          </div>
+          <div class="re_new_group_one">
+              <input type="text" placeholder="Enter Vendor Name" name="vendor_name" formControlName="vendor_name" [ngClass]="{ 'is-invalid': submitted && f.vendor_name.errors }"  [(ngModel)]="vendor_name"/>
+              <div *ngIf="submitted && f.vendor_name.errors" class="invalid-feedback">
+                <div *ngIf="f.vendor_name.errors.required" style="color:red;">Vendor name is required</div><br>
+              </div>
+          </div>
+          <br>
+          <button  class="registerbtn">Edit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" id="re_close" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  </div>

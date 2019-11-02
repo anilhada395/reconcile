@@ -1,0 +1,128 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 re_left re_in_reconcile">
+                <div class="">
+                    <div class="re_left_title">
+                        <h4>IDMS Data</h4>
+                    </div>
+                    <div *ngIf="idmsData; else idmselseBlock"></div>
+                    <div class="re_left_col">
+                        <table  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover re_left_table idms_tbl">
+                            <thead >
+                                <tr *ngIf='length >=  0' >
+                                    <th><input type="checkbox" ></th>
+                                    <th>Account Name</th>
+                                    <th>Date</th>
+                                    <th>Payment Form</th>
+                                    <th>Amount</th>
+                                    <th>Loan</th>
+                                    <th>Posted By</th>
+                                    <th>Ref. comm</th>
+                                    <th class="re_chk_hide">Acct ID</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of idmsData; index as i;">
+                                    <td><input class="idmsData_chk" type="checkbox" value="checkbox{{i}}" name="idms_tbl_checkbox" (click)="chk_idms_click()"></td>
+                                    <td name>{{data['Account Name']}}</td>
+                                    <td>{{data['Post Date']}}</td>
+                                    <td>{{data['Payment Form'] }}</td>
+                                    <td><input type="text" class="checkbox{{i}} idms_amt_val {{user_role}}" value="{{data['Amount']}}" (input)="onSearchChange($event.target.value)" disabled="{{user_role}}"></td>
+                                    <td>{{data['Loan #']}}</td>
+                                    <td>{{data['Cashier Full Name']}}</td>
+                                    <td>{{data['Ref #']}}</td>
+                                    <td class="re_chk_hide">{{data['Acct ID']}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ng-template #idmselseBlock><div class="ref_load_div idms_loading_img"><img class="ref_loding loading" style="width:50px;" src="assets/img/ref.png"></div></ng-template>
+                    </div>
+                    <div class="re_reconcile_div">
+                        <div class="re_deposit_totle"  *ngIf="idms_totle_val">Total:&nbsp; {{idms_totle_val}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 re_right re_in_reconcile">
+                <div class="">
+                    <div class="re_right_title">
+                        <h4>Chase 6550/Deposit Log</h4>
+                    </div>
+                    <div class="re_right_col">
+                        <div *ngIf="bank_data; else depositelseBlock"></div>
+                        <table datatable [dtOptions]="dtOptions1" [dtTrigger]="dtTrigger1" class="row-border hover re_right_table deposit_tbl">
+                            <thead >
+                                <tr  *ngIf='length1 >=  0'>
+                                <th><input type="checkbox"></th>
+                                <th>Source</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Payment Type</th>
+                                <th>Flag</th>
+                                <th class="re_chk_hide">Flagged</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of bank_data; index as i">
+                                    <td><input type="checkbox" name="deposit_tbl_checkbox" value="decheckbox{{i}}" (click)="chk_idms_click()"></td>
+                                    <td class="pointer" (click)="deposit_more_details(item['description'],item['amount'])">{{item['bank_name']}}</td>
+                                    <td class="pointer" (click)="deposit_more_details(item['description'],item['amount'])">{{item['description']}}</td>
+                                    <td class="pointer amount_right" (click)="deposit_more_details(item['description'],item['amount'])">{{item['amount']}}</td>
+                                    <td class="pointer" (click)="deposit_more_details(item['description'],item['amount'])">{{item['date']}}</td>
+                                    <td class="pointer" (click)="deposit_more_details(item['description'],item['amount'])">{{item['payment_type']}}</td>
+                                    <td>
+                                        <label class="switch" *ngIf="item['flag'] == 'open'">
+                                        <input type="checkbox" class="decheckbox{{i}} data_check{{i}}" name="deposit_tbl_chk_flag" (click)="show_flag(i,item['_id'])" checked ><span class="slider round"></span>
+                                    </label>
+                                    <label class="switch" *ngIf="item['flag'] != 'open'">
+                                            <input type="checkbox" class="decheckbox{{i}} data_check{{i}}" name="deposit_tbl_chk_flag" (click)="show_flag(i,item['_id'])"><span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                    <td class="re_chk_hide"><input type="text" class="deposit_tbl_new_flag{{i}} flag_value flag_status_decheckbox{{i}}" [ngModel]="item['flag_data']" name="deposit_tbl_new_flag{{i}}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ng-template #depositelseBlock><div class="ref_load_div"><img class="ref_loding loading" style="width:50px;" src="assets/img/ref.png"></div></ng-template>
+                    </div>
+                    <div class="re_reconcile_div">
+                        <div class="re_deposit_totle"  *ngIf="deposit_log_totle">Total:&nbsp; {{deposit_log_totle}}</div>
+                        
+                        <div>
+                            <button class="button_reconcile_verified reconcile_button disabled" (click)="onSubmit('reconciled_verified')" disabled>Reconcile & Varified</button>
+
+                            <button class="button_deposit_log reconcile_button disabled" (click)="onSubmit('reconciled')" disabled>Reconcile</button>
+                            
+                            <button class="transfer_button disabled" (click)="onTransfer()" disabled>Transfer</button>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row re_bottom_note">
+            <div class="card card-plain">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title mt-0"> Notes</h4>
+                    <p class="card-category"> 
+                        <mwl-text-input-autocomplete-container>
+                        <textarea
+                            placeholder="Type @ to search..."
+                            class="form-control re_note_textarea re_note"
+                            rows="5"
+                            [(ngModel)]="formControlValue"
+                            mwlTextInputAutocomplete
+                            [findChoices]="findChoices"
+                            [getChoiceLabel]="getChoiceLabel">
+                        </textarea>
+                        </mwl-text-input-autocomplete-container>
+                    </p>
+                    <div class="note_button_div">
+                        <span class="note_loading_img"><img class="ref_loding loading" style="width:30px;" src="assets/img/ref.png">&nbsp;
+                        </span>
+                        <button class="note_button reconcile_button" (click)="send_note()">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 re_left re_in_reconcile">
+                <div class="">
+                    <div class="re_left_title">
+                        <h4>Incoming</h4>
+                    </div>
+                    <div *ngIf="pending_deposit; else pending_depositelseBlock"></div>
+                    <div class="re_left_col">
+                        <table  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover re_left_table idms_tbl">
+                            <thead >
+                                <tr *ngIf='length >= 0'>
+                                    <th>Date</th>
+                                    <th>Trans ID</th>
+                                    <th>User ID</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="pointer" *ngFor="let data of pending_deposit; index as i;">
+                                    <td (click)="incoming_more_details(data['note'])">{{data['date']}}</td>
+                                    <td (click)="incoming_more_details(data['note'])">{{data['transaction_id']}}</td>
+                                    <td (click)="incoming_more_details(data['note'])">{{data['user_id'] }}</td>
+                                    <td class="amount_right" (click)="incoming_more_details(data['note'])">{{data['amount']}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ng-template #pending_depositelseBlock>
+                            <div class="ref_load_div">
+                                <img class="ref_loding loading" style="width:50px;" src="assets/img/ref.png">
+                            </div>
+                        </ng-template>
+                    </div>
+                    <div class="re_reconcile_div">
+                        <div class="re_deposit_totle"  *ngIf="pe_deposit_totle">Total:&nbsp; {{pe_deposit_totle}}</div>
+                    </div>  
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 re_left re_in_reconcile">
+                <div class="">
+                    <div class="re_right_title">
+                        <h4>Outgoing</h4>
+                    </div>
+                    <div *ngIf="outgoing_deposit; else outgoing_depositelseBlock"></div>
+                    <div class="re_right_col">
+                        <table  datatable [dtOptions]="dtOptions1" [dtTrigger]="dtTrigger1" class="row-border hover re_left_table idms_tbl">
+                            <thead >
+                                <tr *ngIf='length1 >= 0'>
+                                    <th>Date</th>
+                                    <th>Vendor</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="pointer" *ngFor="let data of outgoing_deposit; index as i;">
+                                    <td (click)="outgoing_more_details(data['note'])">{{data['date']}}</td>
+                                    <td (click)="outgoing_more_details(data['note'])">{{data['vendor']}}</td>
+                                    <td class="amount_right" (click)="outgoing_more_details(data['note'])">{{data['amount']}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ng-template #outgoing_depositelseBlock>
+                            <div class="ref_load_div">
+                                <img class="ref_loding loading" style="width:50px;" src="assets/img/ref.png">
+                            </div>
+                        </ng-template>
+                    </div> 
+                    <div class="re_reconcile_div">
+                        <div class="re_deposit_totle"  *ngIf="outgoing_totle">Total:&nbsp; {{outgoing_totle}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 re_right re_in_reconcile">
+                <div class="">
+                    <div class="re_right_title">
+                        <h4>Reconciled Verified</h4>
+                    </div>
+                    <div *ngIf="incoming_reconciled_varified; else incoming_reconciled_varifiedelseBlock"></div>
+                    <div class="re_right_col">
+                        <table  datatable [dtOptions]="dtOptions2" [dtTrigger]="dtTrigger2" class="row-border hover re_left_table idms_tbl">
+                            <thead >
+                                <tr *ngIf='length2 >= 0'>
+                                <th>Date</th>
+                                <th>Trans ID</th>
+                                <th>User ID</th>
+                                <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="pointer" *ngFor="let data of incoming_reconciled_varified; index as i;">
+                                    <td (click)="incoming_verified_more_details(data['note'])">{{data['date']}}</td>
+                                    <td (click)="incoming_verified_more_details(data['note'])">{{data['transaction_id']}}</td>
+                                    <td (click)="incoming_verified_more_details(data['note'])">{{data['user_id'] }}</td>
+                                    <td class="amount_right" (click)="incoming_verified_more_details(data['note'])">{{data['amount']}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ng-template #incoming_reconciled_varifiedelseBlock>
+                            <div class="ref_load_div">
+                                <img class="ref_loding loading" style="width:50px;" src="assets/img/ref.png">
+                            </div>
+                        </ng-template>
+                    </div> 
+                    <div class="re_reconcile_div">
+                        <div class="re_deposit_totle"  *ngIf="incoming_recon_verified_totle">Total:&nbsp; {{incoming_recon_verified_totle}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    

@@ -1,0 +1,33 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Flagged Table</h4>
+          </div>
+          <div class="card-body">
+            <button mat-raised-button type="submit" class="re_add_user_btn btn btn-danger pull-left"(click)="open()">Add Flag</button>
+            
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+            <thead >
+              <tr  *ngIf='length >  0'>
+              <th>Flag Name</th>
+              <th>Created Date</th>
+              <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of flag_data; index as i">
+                    <td>{{item['flag_name']}}</td>
+                    <td>{{item['created_date']}}</td>
+                    <td><a (click)="edit(item._id)"><img style="width:20px;" src="assets/img/edit.png"></a>&nbsp;&nbsp; <a class="userdelete" (click)="delete( item._id)" ><img style="width:20px;" src="assets/img/delete.png"></a></td>
+                </tr>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

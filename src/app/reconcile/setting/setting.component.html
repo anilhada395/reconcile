@@ -1,0 +1,160 @@
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="modal-header">
+						<h4 class="modal-title">Intacct Setting</h4>
+					</div>
+					<div class="modal-body">
+						<div style="text-align: center;">
+							<form [formGroup]="settingForm" class="register_form">
+								<div class="container">
+									<div class="re_new_group">
+										<div class="re_new_group_ch">
+											<label class="lable_title" for="intacct_sender_id">Sender ID</label>
+											<input #senderIDs type="text" class="custom_bg" placeholder="Enter Sender ID" name="intacct_sender_id" formControlName="intacct_sender_id" [(ngModel)]="senderID" (focusout) = "focusoutHandler(senderIDs.value, senderIDs.name)" />
+										</div>
+										
+										<div class="re_new_group_ch">
+											<label class="lable_title" for="intacct_sender_password">Sender Password</label>
+											<input #senderPass type="text" placeholder="Enter Sender Password" name="intacct_sender_password" formControlName="intacct_sender_password" [(ngModel)]="senderPassword" (focusout) = "focusoutHandler(senderPass.value, senderPass.name)" />
+										</div>
+									</div>
+					
+									<div class="re_new_group">
+										<div class="re_new_group_ch">
+											<label class="lable_title" for="intacct_user_id">User ID</label>
+											<input #userIDs type="text" placeholder="Enter User ID" name="intacct_user_id" formControlName="intacct_user_id" [(ngModel)]="userID" (focusout) = "focusoutHandler(userIDs.value, userIDs.name)" />
+										</div>
+									
+										<div class="re_new_group_ch">
+											<label class="lable_title" for="intacct_user_password">User Password</label>
+											<input #userPass type="text" placeholder="Enter User Password" name="intacct_user_password" formControlName="intacct_user_password"  [(ngModel)]="userPassword" (focusout) = "focusoutHandler(userPass.value, userPass.name)" />
+											</div>
+										</div>
+									<div class="re_new_group_ch">
+										<label class="lable_title" for="intacct_company_id">Company ID</label>
+											<input #companyIDs type="text" placeholder="Enter Company ID" name="intacct_company_id" formControlName="intacct_company_id" [(ngModel)]="companyID" (focusout) = "focusoutHandler(companyIDs.value, companyIDs.name)" />
+									<br>
+								</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-6">
+					<div class="card">
+						<div class="modal-header">
+							<h4 class="modal-title">IDMS Setting</h4>
+						</div>
+						<div class="modal-body">
+							<div style="text-align: center;">
+								<form [formGroup]="settingForm" class="register_form">
+									<div class="container">
+										<div class="re_new_group">
+											<div class="re_new_group_ch">
+												<label class="lable_title" for="idms_hostname">Host Name</label>
+												<input #idmshosts type="text" class="custom_bg" placeholder="Enter IDMS Host Name" name="idms_hostname" formControlName="idms_hostname" [(ngModel)]="hostName" (focusout) = "focusoutHandler(idmshosts.value, idmshosts.name)" />
+											</div>
+											
+											<div class="re_new_group_ch">
+												<label class="lable_title" for="idms_username">User Name</label>
+												<input #idmsus type="text" placeholder="Enter IDMS User Name" name="idms_username" formControlName="idms_username" [(ngModel)]="idmsUser" (focusout) = "focusoutHandler(idmsus.value, idmsus.name)" />
+											</div>
+										</div>
+						
+										<div class="re_new_group">
+											<div class="re_new_group_ch">
+												<label class="lable_title" for="idms_password">User Password</label>
+												<input #idmsPass type="text" placeholder="Enter IDMS Password" name="idms_password" formControlName="idms_password" [(ngModel)]="idmsPassword" (focusout) = "focusoutHandler(idmsPass.value, idmsPass.name)" />
+											</div>
+										</div>
+										<div class="re_new_group">
+											<div class="re_new_group_ch">
+												<label class="lable_title" for="idms_filename">File Name</label>
+												<input #idmsFiles type="text" placeholder="Enter File Name" name="idms_filename" formControlName="idms_filename" [(ngModel)]="idmsFile" (focusout) = "focusoutHandler(idmsFiles.value, idmsFiles.name)" />
+												</div> 
+											</div>
+										</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+	
+			</div>
+
+
+
+			<div class="row">
+					<div class="col-md-6">
+						<div class="card">
+							<div class="modal-header">
+								<h4 class="modal-title">Intacct Bill Setting</h4>
+							</div>
+							<div class="modal-body">
+								<div style="text-align: center;">
+									<form [formGroup]="settingForm" class="register_form">
+										<div class="container">
+											<div class="re_new_group">
+												<div class="re_new_group_one">
+													<label class="lable_title" for="bill_account_no">Account Number</label>
+													<input #billAcc type="text" class="custom_bg" placeholder="Enter Account No." name="bill_account_no" formControlName="bill_account_no" [(ngModel)]="billAccount" (focusout) = "focusoutHandler(billAcc.value, billAcc.name)" />
+												</div>
+												
+												<div class="re_new_group_one">
+													<label class="lable_title" for="bill_location_id">Location ID</label>
+													<input #billLoc type="text" placeholder="Enter Location ID" name="bill_location_id" formControlName="bill_location_id" [(ngModel)]="billLocation" (focusout) = "focusoutHandler(billLoc.value, billLoc.name)" />
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="card">
+							<div class="modal-header">
+								<h4 class="modal-title">Twilio Setting</h4>
+							</div>
+							<div class="modal-body">
+								<div style="text-align: center;">
+									<form [formGroup]="settingForm" class="register_form">
+										<div class="container">
+											<div class="re_new_group">
+												<div class="re_new_group_ch">
+													<label class="lable_title" for="twillo_account_sid">Account SID</label>
+													<input #accid type="text" class="custom_bg" placeholder="Enter Account SID" name="twillo_account_sid" formControlName="twillo_account_sid" [(ngModel)]="accountSid" (focusout) = "focusoutHandler(accid.value, accid.name)" />
+												</div>
+												
+												<div class="re_new_group_ch">
+													<label class="lable_title" for="twillo_auth_token">Auth Token</label>
+													<input #autoken type="text" placeholder="Enter Auth Token" name="twillo_auth_token" formControlName="twillo_auth_token" [(ngModel)]="authToken" (focusout) = "focusoutHandler(autoken.value, autoken.name)" />
+												</div>
+											</div>
+							
+											<div class="re_new_group">
+												<div class="re_new_group_ch">
+													<label class="lable_title" for="twillo_from_no">From Number</label>
+													<input #fno type="text" placeholder="Enter From Number" name="twillo_from_no" formControlName="twillo_from_no" [(ngModel)]="fromNumber" (focusout) = "focusoutHandler(fno.value, fno.name)" />
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+		
+				</div>
+
+	</div>
+</div>

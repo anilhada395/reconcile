@@ -1,0 +1,31 @@
+<div class="login_com">
+	<div class="panel-lite">
+		<div class="thumbur">
+			<div class="icon-lock"></div>
+		</div>
+		<h4>Login</h4>
+		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+			<div class="form-group">
+				<input class="form-control" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" [(ngModel)]="username"/>
+				<label class="form-label">Username</label>
+				<div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+					<div *ngIf="f.name.errors.required" style="color:red;">Username is required</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [(ngModel)]="usertoken"/>
+				<label class="form-label">Password</label>
+				<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+					<div *ngIf="f.password.errors.required" style="color:red;">Password is required</div>
+					<div *ngIf="f.password.errors.minlength" style="color:red;">Password must be at least 6 characters</div>
+				</div>
+			</div>
+			<div class="field-group">
+				<input type="checkbox" name="remember" formControlName="remember" [(ngModel)]="userrem"/>&nbsp;
+				<label class="form-label">Remember me</label>
+			</div>
+			<a routerLink="/resetpassword" routerLinkActive="active">Forgot Password ?  </a>
+			<button class="floating-btn"><i class="icon-arrow"></i></button>
+		</form>
+	</div> 
+</div>

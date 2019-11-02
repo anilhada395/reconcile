@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h4 class="modal-title">Add Bank</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div style="text-align: center;">
+      <form [formGroup]="addbank" (ngSubmit)="onSubmit()">
+        <div class="container">
+          <div class="re_new_group">
+            <div class="">
+              <input type="text" placeholder="Enter Bank Name" name="bank_name" formControlName="bank_name" [ngClass]="{ 'is-invalid': submitted && f.bank_name.errors }" />
+              <div *ngIf="submitted && f.bank_name.errors" class="invalid-feedback">
+                <div *ngIf="f.bank_name.errors.required" style="color:red;">Bank Name is required</div><br>
+              </div>
+
+              <input type="text" placeholder="Enter Account Number" name="account_number" formControlName="account_number" />
+            </div>
+
+          <button  class="registerbtn">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" id="re_close" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  </div>

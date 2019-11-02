@@ -1,0 +1,37 @@
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header card-header-danger">
+						<h4 class="card-title ">Bank Table</h4>
+					</div>
+					<div class="card-body">
+						<button mat-raised-button type="submit" class="re_add_user_btn btn btn-danger pull-left"(click)="open()">Add Bank</button>
+						
+						<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+						<thead >
+						  <tr  *ngIf='length >= 0'>
+							<th>Bank Name</th>
+							<th>Account Number</th>
+							<th>Uplaod</th>
+							<th>Action</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr *ngFor="let item of bankData">
+							<td>{{ item.bank_name }}</td>
+							<td>{{ item.account_number }}</td>
+							<td>
+								<input type="file" (change)="onFileSelect($event.target,item._id,item.bank_name,item.account_number)" name="myfile">
+							</td>
+							<td><a (click)="edit(item._id)"><img class="pointer" style="width:20px;" src="assets/img/edit.png"></a>&nbsp;&nbsp; <a class="userdelete" (click)="delete( item._id)" ><img class="pointer" style="width:20px;" src="assets/img/delete.png"></a></td>
+						  </tr>
+						</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,78 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+                  <div class="col-lg-6 col-md-12 re_left re_in_reconcile">
+                      <div class="">
+                          <div class="re_left_title">
+                              <h4>Incoming Close Flag</h4>
+                          </div>
+                          <div class="re_left_col">
+                                <div *ngIf="incoming_close; else deposit_reconciledelseBlock"></div>
+                                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover re_left_table">
+                                    <thead >
+                                        <tr  *ngIf='length >=  0'>
+                                        <th class="re_chk_hide"><input type="checkbox"></th>
+                                        <th>Source</th>
+                                        <th>Description</th>
+                                        <th>Amount</th>
+                                        <th>Date</th>
+                                        <th>Payment Type</th>
+                                        <th class="">Flag Note</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of incoming_close; index as i">
+                                            <td class="re_chk_hide"><input type="checkbox" name="deposit_tbl_checkbox" value="decheckbox{{i}}" (click)="chk_idms_click()"></td>
+                                            <td (click)="flag_more_detail(item['flag_data'])" class="pointer" >{{item['bank_name']}}</td>
+                                            <td (click)="flag_more_detail(item['flag_data'])" class="pointer" >{{item['description']}}</td>
+                                            <td (click)="flag_more_detail(item['flag_data'])" class="pointer" >{{item['amount']}}</td>
+                                            <td (click)="flag_more_detail(item['flag_data'])" class="pointer" >{{item['date']}}</td>
+                                            <td (click)="flag_more_detail(item['flag_data'])" class="pointer" ></td>
+                                            <td (click)="flag_more_detail(item['flag_data'])" class="pointer" >{{item['flag_data']}}</td>
+                                        </tr>
+                                </tbody>
+                                </table>
+                                <ng-template #deposit_reconciledelseBlock><div class="ref_load_div"><img class="ref_loding loading" style="width:50px;" src="assets/img/ref.png"></div></ng-template>
+                          </div>
+                      </div>
+                  </div>
+              <div class="col-lg-6 col-md-12 re_right re_in_reconcile">
+                      <div class="">
+                          <div class="re_right_title">
+                              <h4 >Outgoing Close Flag</h4>
+                              <!-- <p class="card-category">Wire In PSB & 6128 ACH info/Iaccess</p> -->
+                          </div>
+                          <div class="re_right_col">
+                                
+                            <div *ngIf="outgoing_close; else deposit_reconciledelseBlock"></div>
+                            <table datatable [dtOptions]="dtOptions1" [dtTrigger]="dtTrigger1" class="row-border hover re_right_table">
+                                <thead >
+                                    <tr  *ngIf='length1 >=  0'>
+                                    <th class="re_chk_hide"><input type="checkbox"></th>
+                                    <th>Source</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Payment Type</th>
+                                    <th class="">Flag Note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of outgoing_close; index as i">
+                                        <td class="re_chk_hide"><input type="checkbox" name="deposit_tbl_checkbox" value="decheckbox{{i}}" (click)="chk_idms_click()"></td>
+                                        <td (click)="flag_more_detail(item['flag_data'])" class="pointer" >{{item['bank_name']}}</td>
+                                        <td (click)="flag_more_detail(item['flag_data'])" class="pointer" >{{item['description']}}</td>
+                                        <td (click)="flag_more_detail(item['flag_data'])" class="pointer" >{{item['amount']}}</td>
+                                        <td (click)="flag_more_detail(item['flag_data'])" class="pointer" >{{item['date']}}</td>
+                                        <td (click)="flag_more_detail(item['flag_data'])" class="pointer" ></td>
+                                        <td (click)="flag_more_detail(item['flag_data'])" class="pointer" >{{item['flag_data']}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <ng-template #deposit_reconciledelseBlock><div class="ref_load_div"><img class="ref_loding loading" style="width:50px;" src="assets/img/ref.png"></div></ng-template>
+                          </div>
+                      </div>
+              </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,45 @@
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header card-header-danger">
+						<h4 class="card-title ">Users Table</h4>
+					</div>
+					<div class="card-body">
+						<button mat-raised-button type="submit" class="re_add_user_btn btn btn-danger pull-left"(click)="open()">Add user</button>
+						
+						<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+						<thead >
+						  <tr  *ngIf='length >= 0'>
+							<th>ID</th>
+							<th>Username</th>
+							<th>Email</th>
+							<th>Phone</th>
+							<th>Address</th>
+							<th>Gender</th>
+							<th>Country</th>
+							<th>Role</th>
+							<th>Action</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr *ngFor="let usersData of usersData">
+							<td>{{ usersData._id }}</td>
+							<td>{{ usersData.name }}</td>
+							<td>{{ usersData.email }}</td>
+							<td>{{ usersData.phone }}</td>
+							<td>{{ usersData.address }}</td>
+							<td>{{ usersData.gender }}</td>
+							<td>{{ usersData.country }}</td>
+							<td>{{ usersData.userrole[0].user_role }}</td>
+							<td><a (click)="edit(usersData._id)"><img class="pointer" style="width:20px;" src="assets/img/edit.png"></a>&nbsp;&nbsp; <a class="userdelete" (click)="delete( usersData._id)" ><img class="pointer" style="width:20px;" src="assets/img/delete.png"></a></td>
+						  </tr>
+						</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
